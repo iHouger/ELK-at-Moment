@@ -1,0 +1,4 @@
+- pipeline.id: visi_pipeline
+  pipeline.workers: 1
+  pipeline.batch.size: 1
+  path.config: "./config/pipelines/visi_pipeline.conf"
