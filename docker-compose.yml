@@ -2,8 +2,9 @@ version: '3.3'
 services:
   elasticsearch:
     image: 'elasticsearch:7.9.3'
+    restart: unless-stopped
     volumes:
-      - '.\elasticsearch\data:/usr/share/elasticsearch/data'
+      - './elasticsearch/data:/usr/share/elasticsearch/data'
     ports:
       - '9200:9200'
       - '9300:9300'
@@ -13,6 +14,7 @@ services:
       - elk
   kibana:
     image: 'kibana:7.9.3'
+    restart: unless-stopped
     ports:
       - '5601:5601'
     links:
@@ -23,9 +25,10 @@ services:
       - elk
   logstash:
     image: 'logstash:7.9.3'
+    restart: unless-stopped
     volumes:
-      - '.\logstash\config\pipelines.yml:/usr/share/logstash/config/pipelines.yml'
-      - '.\logstash\config\pipelines:/usr/share/logstash/config/pipelines'
+      - './logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml'
+      - './logstash/config/pipelines:/usr/share/logstash/config/pipelines'
     ports:
       - '5046:5046'
       - '5044:5044'
